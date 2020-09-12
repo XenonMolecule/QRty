@@ -13,7 +13,7 @@ import Col from "react-bootstrap/Col";
 
 import '../styles/messenger.css'
 
-const ENDPOINT = "https://qrty-289309.ue.r.appspot.com/";
+const ENDPOINT = "http://localhost:5000/";
 
 export default function MessengerPage() {
     let startRoom = window.location.pathname;
