@@ -21,6 +21,10 @@ app.get('/joinroom', function(req, res) {
     res.sendFile(path.join(__dirname, 'build', 'index.html'));
 });
 
+app.get('/infopage', function(req, res) {
+    res.sendFile(path.join(__dirname, 'build', 'index.html'));
+});
+
 app.get('/room/*', function(req, res) {
     res.sendFile(path.join(__dirname, 'build', 'index.html'));
 });

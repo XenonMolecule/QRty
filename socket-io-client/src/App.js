@@ -2,8 +2,8 @@ import React, { useState } from "react";
 import MessengerPage from "./layouts/MessengerPage";
 import HomePage from "./layouts/HomePage";
 import JoinRoomPage from "./layouts/JoinRoomPage";
-import QRtyNav from "./components/QRtyNav";
 import InstructionPage from "./layouts/InstructionPage";
+import QRtyNav from "./components/QRtyNav";
 
 function App() {
     const [loadClient, setLoadClient] = useState(true);
@@ -11,10 +11,13 @@ function App() {
     let room = "";
     switch(window.location.pathname) {
         case "/" :
-            page = <InstructionPage/>;
+            page = <HomePage/>;
             break;
         case "/joinroom":
             page = <JoinRoomPage/>;
+            break;
+        case "/infopage":
+            page = <InstructionPage/>
             break;
         default:
             if (window.location.pathname.startsWith("/room/")) {
