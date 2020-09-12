@@ -1,19 +1,10 @@
 import React, { useEffect, useState } from "react";
-import socketIOClient from "socket.io-client";
 
 import Container from "react-bootstrap/Container";
 import Button from "react-bootstrap/Button";
 import Row from "react-bootstrap/Row";
 
-const ENDPOINT = "http://127.0.0.1:4001";
-
 export default function MessengerPage() {
-    const [socket, setSocket] = useState(socketIOClient(ENDPOINT));
-
-    useEffect(() => {
-        // CLEAN UP THE EFFECT
-        return () => socket.disconnect();
-    }, []);
 
     return (
         <Container style={{'font-family':'Oswald'}}>

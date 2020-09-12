@@ -34,6 +34,7 @@ app.post('/uploads', async (req, res, next) => {
         const imageUrl = await uploadImage(myFile);
         res
             .status(200)
+            .header({"Access-Control-Allow-Origin":"*"})
             .json({
                 message: "Upload was successful",
                 data: imageUrl
