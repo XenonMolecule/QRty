@@ -1,6 +1,7 @@
 const util = require('util');
 const gc = require('../config/');
 const bucket = gc.bucket('qrty-images'); // should be your bucket name
+const { v4: uuidv4 } = require('uuid');
 
 /**
  *
@@ -14,7 +15,9 @@ const bucket = gc.bucket('qrty-images'); // should be your bucket name
 const uploadImage = (file) => new Promise((resolve, reject) => {
     const { originalname, buffer } = file;
 
-    const blob = bucket.file(originalname.replace(/ /g, "_"))
+    let filename = uuidv4() + originalname.substring(originalname.indexOf('.'));
+
+    const blob = bucket.file(filename);
     const blobStream = blob.createWriteStream({
         resumable: false
     })
