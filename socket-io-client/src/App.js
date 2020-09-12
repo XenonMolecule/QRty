@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import MessengerPage from "./layouts/MessengerPage";
 import HomePage from "./layouts/HomePage";
-import QRCode from "./components/QRCode";
 import JoinRoomPage from "./layouts/JoinRoomPage";
 
 function App() {
@@ -18,6 +17,7 @@ function App() {
     return (
         <>
             {page}
+            <link href="https://fonts.googleapis.com/css?family=Oswald" rel="stylesheet"/>
         </>
     );
 }

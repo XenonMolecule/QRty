@@ -3,10 +3,9 @@ import socketIOClient from "socket.io-client";
 
 import Container from "react-bootstrap/Container";
 import Navbar from "react-bootstrap/Navbar";
-import Button from "react-bootstrap/Button";
 import Row from "react-bootstrap/Row";
+import Form from "react-bootstrap/Form";
 import Col from "react-bootstrap/Col";
-import EntryBar from "../components/EntryBar";
 
 const ENDPOINT = "http://127.0.0.1:4001";
 
@@ -18,8 +17,16 @@ export default function MessengerPage() {
         return () => socket.disconnect();
     }, []);
 
+    let roomCode = [];
+
+    for (let i = 0; i < 6; i ++) {
+        roomCode.push(<Form.Group as={Col} controlId={"roomID-" + i}>
+            <Form.Control />
+        </Form.Group>);
+    }
+
     return (
-        <Container style={{'font-family':'Oswald'}}>
+        <Container style={{'fontFamily':'Oswald'}}>
             <Navbar bg="light">
                 <Navbar.Brand href="/">Return Home</Navbar.Brand>
             </Navbar>
@@ -29,10 +36,12 @@ export default function MessengerPage() {
             <Row className="justify-content-center">
                 <p>Enter the 6-character room code below:</p>
             </Row>
-            <Row className="justify-content-center">
-                <EntryBar btnText={"Join"} send={(text) => {
-                        window.location=text;
-                    }}/>
+            <Row className="justify-contentcenter">
+                <Form>
+                    <Form.Row>
+                        {roomCode}
+                    </Form.Row>
+                </Form>
             </Row>
         </Container>
     );
