@@ -8,7 +8,6 @@ function App() {
     return (
         <>
             <MessengerPage/>
-            <QRCode text = {"https://www.google.com"}></QRCode>
         </>
     );
 }

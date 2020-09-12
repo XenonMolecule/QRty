@@ -4,7 +4,10 @@ import socketIOClient from "socket.io-client";
 import EntryBar from "../components/EntryBar";
 import Container from "react-bootstrap/Container"
 import Navbar from "react-bootstrap/Navbar";
+import Col from "react-bootstrap/Col";
+import Row from "react-bootstrap/Row";
 import TextCard from "../components/TextCard";
+import QRCode from "../components/QRCode";
 
 const ENDPOINT = "http://127.0.0.1:4001";
 
@@ -33,7 +36,14 @@ export default function MessengerPage() {
 
     return (
         <Container>
-            <h1>This is the messenger page</h1>
+            <Row>
+                <Col lg="10" className="md-12 my-auto">
+                    <h1>Scan to connect another device to this room:</h1>
+                </Col>
+                <Col className="text-right">
+                    <QRCode text = {"https://www.google.com"}></QRCode>
+                </Col>
+            </Row>
             {messages}
             <Navbar bg="light" expand="lg" fixed={"bottom"}>
                 <Container>
