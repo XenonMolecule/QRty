@@ -7,6 +7,7 @@ import Row from "react-bootstrap/Row";
 import Form from "react-bootstrap/Form";
 import Col from "react-bootstrap/Col";
 import Button from "react-bootstrap/Button";
+import QRtyNav from "../components/QRtyNav";
 
 export default function MessengerPage() {
     const txt0 = useRef(null);
@@ -51,34 +52,33 @@ export default function MessengerPage() {
     }
 
     return (
-        <Container style={{'fontFamily':'Oswald'}}>
-            <Navbar bg="light">
-                <Navbar.Brand href="/">Return Home</Navbar.Brand>
-            </Navbar>
-            <Row className="justify-content-center" style={{'text-transform': 'uppercase'}}>
-                <h1>Join a Room</h1>
-            </Row>
-            <Row className="justify-content-center">
-                <p>Enter the 6-character room code below:</p>
-            </Row>
-            <Row className="justify-content-center">
-                <Form>
-                    <Form.Row>
-                        {roomCode}
-                    </Form.Row>
-                    <Form.Row className={"justify-content-center"}>
-                        <Button size={"lg"} style={{"height":"50px"}} block onClick={()=> {
-                            let room = "";
-                            for(let i = 0; i < 6; i ++) {
-                                room += refs[i].current.value;
-                            }
-                            if (room.length == 6) {
-                                window.location = "/" + room;
-                            }
-                        }}>Join</Button>
-                    </Form.Row>
-                </Form>
-            </Row>
-        </Container>
+        <>
+            <Container style={{'fontFamily':'Oswald'}}>
+                <Row className="justify-content-center" style={{'text-transform': 'uppercase'}}>
+                    <h1>Join a Room</h1>
+                </Row>
+                <Row className="justify-content-center">
+                    <p>Enter the 6-character room code below:</p>
+                </Row>
+                <Row className="justify-content-center">
+                    <Form>
+                        <Form.Row>
+                            {roomCode}
+                        </Form.Row>
+                        <Form.Row className={"justify-content-center"}>
+                            <Button size={"lg"} style={{"height":"50px"}} block onClick={()=> {
+                                let room = "";
+                                for(let i = 0; i < 6; i ++) {
+                                    room += refs[i].current.value;
+                                }
+                                if (room.length == 6) {
+                                    window.location = "/" + room;
+                                }
+                            }}>Join</Button>
+                        </Form.Row>
+                    </Form>
+                </Row>
+            </Container>
+        </>
     );
 }

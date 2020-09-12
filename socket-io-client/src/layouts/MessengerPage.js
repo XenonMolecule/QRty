@@ -8,6 +8,7 @@ import Col from "react-bootstrap/Col";
 import Row from "react-bootstrap/Row";
 import TextCard from "../components/TextCard";
 import QRCode from "../components/QRCode";
+import QRtyNav from "../components/QRtyNav";
 
 const ENDPOINT = "http://127.0.0.1:4001";
 
@@ -36,28 +37,27 @@ export default function MessengerPage() {
     },[messages]);
 
     return (
-        <Container>
-        <Navbar bg="light">
-            <Navbar.Brand href="/">Return Home</Navbar.Brand>
-        </Navbar>
-            <Row>
-                <Col lg="10" className="md-12 my-auto">
-                    <h1>Scan to connect another device to this room:</h1>
-                </Col>
-                <Col className="text-right">
-                    <QRCode text = {window.location}></QRCode>
-                </Col>
-            </Row>
-            {messages}
-            <hr style={{'opacity':'0','marginTop':'78px'}}/>
-            <Navbar bg="light" expand="lg" fixed={"bottom"}>
-                <Container>
-                    <EntryBar btnText={"Send"} send={(text) => {
-                        addMessage(text);
-                        socket.emit("textMessage", {text: text, room: room});
-                    }}/>
-                </Container>
-            </Navbar>
-        </Container>
+        <>
+            <Container>
+                <Row>
+                    <Col lg="10" className="md-12 my-auto">
+                        <h1>Scan to connect another device to this room:</h1>
+                    </Col>
+                    <Col className="text-right">
+                        <QRCode text = {window.location}></QRCode>
+                    </Col>
+                </Row>
+                {messages}
+                <hr style={{'opacity':'0','marginTop':'78px'}}/>
+                <Navbar bg="light" expand="lg" fixed={"bottom"}>
+                    <Container>
+                        <EntryBar btnText={"Send"} send={(text) => {
+                            addMessage(text);
+                            socket.emit("textMessage", {text: text, room: room});
+                        }}/>
+                    </Container>
+                </Navbar>
+            </Container>
+        </>
     );
 }
