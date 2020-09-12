@@ -104,4 +104,4 @@ dist
 .tern-port
 
 # Don't release API Keys
-/socket-io-server/config/*.json
+#/socket-io-server/config/*.json
