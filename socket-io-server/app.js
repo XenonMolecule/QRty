@@ -25,7 +25,13 @@ io.on("connection", (socket) => {
         clearInterval(interval);
     });
     socket.on("textMessage", (message) => {
-        console.log(message);
+        socket.to(socket.rooms[message.room]).emit('textMessage', message.text);
+    })
+    socket.on('join room', (room) => {
+        socket.join(room);
+    });
+    socket.on('leave room', (room) => {
+        socket.leave(room);
     })
 });
 
