@@ -3,6 +3,7 @@ import MessengerPage from "./layouts/MessengerPage";
 import HomePage from "./layouts/HomePage";
 import JoinRoomPage from "./layouts/JoinRoomPage";
 import QRtyNav from "./components/QRtyNav";
+import InstructionPage from "./layouts/InstructionPage";
 
 function App() {
     const [loadClient, setLoadClient] = useState(true);
@@ -10,7 +11,7 @@ function App() {
     let room = "";
     switch(window.location.pathname) {
         case "/" :
-            page = <HomePage/>;
+            page = <InstructionPage/>;
             break;
         case "/joinroom":
             page = <JoinRoomPage/>;
