@@ -8,6 +8,10 @@ import TextCard from "../components/TextCard";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faImages } from '@fortawesome/free-solid-svg-icons'
 import ImageCard from "../components/ImageCard";
+import Row from "react-bootstrap/Row";
+import Col from "react-bootstrap/Col";
+
+import '../styles/messenger.css'
 
 const ENDPOINT = "http://127.0.0.1:4001";
 
@@ -54,17 +58,25 @@ export default function MessengerPage() {
                 <hr style={{'opacity':'0','marginTop':'78px'}}/>
                 <Navbar bg="light" expand="lg" fixed={"bottom"}>
                     <Container>
-                        <EntryBar btnText={"Send"} send={(text) => {
-                            addMessage(text);
-                            socket.emit("textMessage", {text: text, room: room});
-                        }}/>
-                        <h1>
-                            <a href={"#"} style={{'color':"#148496", 'marginLeft':'15px'}} onClick={()=> {
-                                fileUpload.current.click();
-                            }}>
-                                <FontAwesomeIcon icon={faImages}/>
-                            </a>
-                        </h1>
+                        <Row className={"justify-content-center"} style={{'width':'100%'}}>
+                            <Col sm={3}/>
+                            <Col sm={5} xs={10}>
+                                <EntryBar btnText={"Send"} send={(text) => {
+                                    addMessage(text);
+                                    socket.emit("textMessage", {text: text, room: room});
+                                }}/>
+                            </Col>
+                            <Col sm={4} xs={2} className={"img-upload-icon"}>
+                                <h1>
+                                    <a href={"#"} style={{'color':"#148496", 'marginLeft':'15px'}} onClick={()=> {
+                                        fileUpload.current.click();
+                                    }}>
+                                        <FontAwesomeIcon icon={faImages}/>
+                                    </a>
+                                </h1>
+                            </Col>
+                        </Row>
+
                     </Container>
                 </Navbar>
             </Container>
