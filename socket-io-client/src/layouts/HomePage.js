@@ -26,12 +26,12 @@ export default function MessengerPage() {
                 <p>Easily share content between multiple devices</p>
             </Row>
             <Row className="justify-content-md-center">
-                <Button variant="primary" size="lg" style = {{'margin-top':'20px', 'text-transform': 'uppercase'}}>
+                <Button onClick={() => {window.location=makeID(6)}} variant="primary" size="lg" style = {{'margin-top':'20px', 'text-transform': 'uppercase'}}>
                     Start a Room
                 </Button>{' '}
             </Row>
             <Row className="justify-content-md-center">
-                <Button variant="primary" size="lg" style = {{'margin-top':'40px', 'text-transform': 'uppercase'}}>
+                <Button onClick={() => {window.location="joinroom"}} variant="primary" size="lg" style = {{'margin-top':'40px', 'text-transform': 'uppercase'}}>
                     Join a Room
                 </Button>{' '}
             </Row>
@@ -40,4 +40,14 @@ export default function MessengerPage() {
             </Row>
         </Container>
     );
+
+    function makeID(length) {
+        var result = '';
+        var characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+        var charsLength = characters.length;
+        for ( var i = 0; i < length; i++ ) {
+            result += characters.charAt(Math.floor(Math.random() * charsLength));
+        }
+        return result;
+    }
 }
