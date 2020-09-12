@@ -1,6 +1,9 @@
 const express = require("express");
 const http = require("http");
 const socketIo = require("socket.io");
+const bodyParser = require('body-parser');
+const multer = require('multer');
+const uploadImage = require('./helpers/helpers');
 
 const port = process.env.PORT || 4001;
 const index = require("./routes/index");
@@ -12,16 +15,34 @@ const server = http.createServer(app);
 
 const io = socketIo(server);
 
-let interval;
+const multerMid = multer({
+    storage: multer.memoryStorage(),
+    limits: {
+        fileSize: 5 * 1024 * 1024,
+    },
+})
+
+app.disable('x-powered-by');
+app.use(multerMid.single('file'));
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({extended: false}));
+
+app.post('/uploads', async (req, res, next) => {
+    try {
+        const myFile = req.file;
+        const imageUrl = await uploadImage(myFile);
+        res
+            .status(200)
+            .json({
+                message: "Upload was successful",
+                data: imageUrl
+            })
+    } catch (error) {
+        next(error)
+    }
+});
 
 io.on("connection", (socket) => {
-    if (interval) {
-        clearInterval(interval);
-    }
-    interval = setInterval(() => getApiAndEmit(socket), 1000);
-    socket.on("disconnect", () => {
-        clearInterval(interval);
-    });
     socket.on("textMessage", (message) => {
         socket.to(socket.rooms[message.room]).emit('textMessage', message.text);
     })
@@ -33,10 +54,12 @@ io.on("connection", (socket) => {
     })
 });
 
-const getApiAndEmit = socket => {
-    const response = new Date();
-    // Emitting a new message. Will be consumed by the client
-    socket.emit("FromAPI", response);
-};
+app.use((err, req, res, next) => {
+    res.status(500).json({
+        error: err,
+        message: 'Internal server error!',
+    })
+    next()
+});
 
 server.listen(port, () => console.log(`Listening on port ${port}`));

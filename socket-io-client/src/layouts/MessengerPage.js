@@ -18,7 +18,6 @@ export default function MessengerPage() {
     let [messages, setMessages] = useState([]);
 
     function addMessage(msg) {
-        console.log(msg);
         setMessages(messages.concat(
             <TextCard>{msg}</TextCard>
         ));

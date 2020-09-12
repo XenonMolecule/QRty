@@ -102,3 +102,6 @@ dist
 
 # TernJS port file
 .tern-port
+
+# Don't release API Keys
+/socket-io-server/config/*.json
