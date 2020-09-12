@@ -41,7 +41,7 @@ export default function MessengerPage() {
                     <h1>Scan to connect another device to this room:</h1>
                 </Col>
                 <Col className="text-right">
-                    <QRCode text = {"https://www.google.com"}></QRCode>
+                    <QRCode text = {window.location.pathname}></QRCode>
                 </Col>
             </Row>
             {messages}
