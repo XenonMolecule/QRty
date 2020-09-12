@@ -66,7 +66,7 @@ export default function MessengerPage() {
                                     socket.emit("textMessage", {text: text, room: room});
                                 }}/>
                             </Col>
-                            <Col sm={4} xs={2} className={"img-upload-icon"}>
+                            <Col sm={4} xs={2} className={"img-upload-icon"} style={{'marginTop':'8px', 'marginLeft':'-25px'}}>
                                 <h1>
                                     <a href={"#"} style={{'color':"#148496", 'marginLeft':'15px'}} onClick={()=> {
                                         fileUpload.current.click();
