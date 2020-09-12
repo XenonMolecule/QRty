@@ -41,10 +41,10 @@ export default function QRtyNav(props) {
                 </Modal.Header>
                 <Modal.Body>
                     <Row className="justify-content-center">
-                        <QRCode text = {window.location}></QRCode>
+                        <QRCode text = {"" + window.location}></QRCode>
                     </Row>
                     <Row className="justify-content-center">
-                        <h2>{props.room.slice(1).split("").join(" ")}</h2>
+                        <h2>{props.room.slice(0).split("").join(" ")}</h2>
                     </Row>
                 </Modal.Body>
                 <Modal.Footer>
