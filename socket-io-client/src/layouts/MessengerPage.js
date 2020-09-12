@@ -47,7 +47,7 @@ export default function MessengerPage() {
             {messages}
             <Navbar bg="light" expand="lg" fixed={"bottom"}>
                 <Container>
-                    <EntryBar send={(text) => {
+                    <EntryBar btnText={"Send"} send={(text) => {
                         addMessage(text);
                         socket.emit("textMessage", {text: text, room: room});
                     }}/>

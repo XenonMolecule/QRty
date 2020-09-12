@@ -20,7 +20,7 @@ export default function EntryBar(props) {
                 <Button variant="info" style={{'width':'100px'}} onClick = {() => {
                     props.send(text);
                     setText("");
-                }}>Send</Button>
+                }}>{props.btnText}</Button>
             </InputGroup.Append>
         </InputGroup>
     );
