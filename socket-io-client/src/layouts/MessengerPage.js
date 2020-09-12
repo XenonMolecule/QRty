@@ -39,14 +39,7 @@ export default function MessengerPage() {
     return (
         <>
             <Container>
-                <Row>
-                    <Col lg="10" className="md-12 my-auto">
-                        <h1>Scan to connect another device to this room:</h1>
-                    </Col>
-                    <Col className="text-right">
-                        <QRCode text = {window.location}></QRCode>
-                    </Col>
-                </Row>
+                <hr style={{'opacity':'0'}}/>
                 {messages}
                 <hr style={{'opacity':'0','marginTop':'78px'}}/>
                 <Navbar bg="light" expand="lg" fixed={"bottom"}>
