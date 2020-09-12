@@ -23,13 +23,13 @@ export default function MessengerPage() {
             <Navbar bg="light">
                 <Navbar.Brand href="/">Return Home</Navbar.Brand>
             </Navbar>
-            <Row className="justify-content-md-center" style={{'text-transform': 'uppercase'}}>
+            <Row className="justify-content-center" style={{'text-transform': 'uppercase'}}>
                 <h1>Join a Room</h1>
             </Row>
-            <Row className="justify-content-md-center">
+            <Row className="justify-content-center">
                 <p>Enter the 6-character room code below:</p>
             </Row>
-            <Row className="justify-content-md-center">
+            <Row className="justify-content-center">
                 <EntryBar btnText={"Join"} send={(text) => {
                         window.location=text;
                     }}/>
