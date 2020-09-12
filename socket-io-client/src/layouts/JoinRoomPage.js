@@ -67,11 +67,11 @@ export default function MessengerPage() {
                         </Form.Row>
                         <Form.Row className={"justify-content-center"}>
                             <Button size={"lg"} style={{"height":"50px"}} block onClick={()=> {
-                                let room = "";
+                                let room = "room/";
                                 for(let i = 0; i < 6; i ++) {
                                     room += refs[i].current.value;
                                 }
-                                if (room.length == 6) {
+                                if (room.length == 11) {
                                     window.location = "/" + room;
                                 }
                             }}>Join</Button>
