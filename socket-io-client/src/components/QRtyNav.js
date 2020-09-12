@@ -27,7 +27,7 @@ export default function QRtyNav(props) {
                 <Navbar.Toggle aria-controls="responsive-navbar-nav" />
                 <Navbar.Collapse id="responsive-navbar-nav">
                     <Nav className="mr-auto">
-                        <Nav.Link href={"/" + makeID(6)}>Create A Room</Nav.Link>
+                        <Nav.Link href={"/room/" + makeID(6)}>Create A Room</Nav.Link>
                         <Nav.Link href="/joinroom">Join A Room</Nav.Link>
                     </Nav>
                     {props.room ? <Nav>
