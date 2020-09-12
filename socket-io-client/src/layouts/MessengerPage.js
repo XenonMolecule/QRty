@@ -17,6 +17,7 @@ export default function MessengerPage() {
     let [messages, setMessages] = useState([]);
 
     function addMessage(msg) {
+        console.log(msg);
         setMessages(messages.concat(
             <TextCard>{msg}</TextCard>
         ));
@@ -48,6 +49,7 @@ export default function MessengerPage() {
                 </Col>
             </Row>
             {messages}
+            <hr style={{'opacity':'0','marginTop':'78px'}}/>
             <Navbar bg="light" expand="lg" fixed={"bottom"}>
                 <Container>
                     <EntryBar btnText={"Send"} send={(text) => {

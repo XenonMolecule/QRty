@@ -2,10 +2,8 @@ import React, { useEffect, useState } from "react";
 import socketIOClient from "socket.io-client";
 
 import Container from "react-bootstrap/Container";
-import Navbar from "react-bootstrap/Navbar";
 import Button from "react-bootstrap/Button";
 import Row from "react-bootstrap/Row";
-import Col from "react-bootstrap/Col";
 
 const ENDPOINT = "http://127.0.0.1:4001";
 
