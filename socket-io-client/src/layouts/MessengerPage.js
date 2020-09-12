@@ -14,7 +14,6 @@ export default function MessengerPage() {
     let [messages, setMessages] = useState([]);
 
     function addMessage(msg) {
-        console.log(messages);
         setMessages(messages.concat(
             <TextCard>{msg}</TextCard>
         ));
@@ -24,12 +23,13 @@ export default function MessengerPage() {
         // CLEAN UP THE EFFECT
         socket.emit("join room", room);
 
-        socket.on('textMessage', (message) => {
-            addMessage(message);
-        });
-
         return () => socket.disconnect();
     }, []);
+
+    useEffect(() => {
+        socket.on('textMessage', addMessage);
+        return () => socket.removeListener('textMessage', addMessage)
+    },[messages]);
 
     return (
         <Container>
