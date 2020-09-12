@@ -16,7 +16,7 @@ export default function MessengerPage() {
             </Row>
             <Row className="justify-content-center">
                 <Button onClick={() => {window.location=makeID(6)}} variant="primary" size="lg" style = {{'margin-top':'20px', 'text-transform': 'uppercase'}}>
-                    Start a Room
+                    Create a Room
                 </Button>{' '}
             </Row>
             <Row className="justify-content-center">
