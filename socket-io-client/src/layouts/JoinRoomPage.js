@@ -20,6 +20,9 @@ export default function MessengerPage() {
 
     return (
         <Container style={{'font-family':'Oswald'}}>
+            <Navbar bg="light">
+                <Navbar.Brand href="/">Return Home</Navbar.Brand>
+            </Navbar>
             <Row className="justify-content-md-center" style={{'text-transform': 'uppercase'}}>
                 <h1>Join a Room</h1>
             </Row>
@@ -30,14 +33,6 @@ export default function MessengerPage() {
                 <EntryBar btnText={"Join"} send={(text) => {
                         window.location=text;
                     }}/>
-            </Row>
-            <Row className="justify-content-md-center">
-                <Button onClick={() => {window.location="joinroom"}} variant="primary" size="lg" style = {{'margin-top':'40px', 'text-transform': 'uppercase'}}>
-                    Join a Room
-                </Button>{' '}
-            </Row>
-            <Row className="justify-content-md-center" style = {{'margin-top':'40px'}}>
-                <a href="https://google.com">Click here for information and instructions</a>
             </Row>
         </Container>
     );

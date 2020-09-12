@@ -37,7 +37,7 @@ export default function MessengerPage() {
     return (
         <Container>
         <Navbar bg="light">
-            <Navbar.Brand href="#">Return Home</Navbar.Brand>
+            <Navbar.Brand href="/">Return Home</Navbar.Brand>
         </Navbar>
             <Row>
                 <Col lg="10" className="md-12 my-auto">
