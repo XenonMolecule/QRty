@@ -7,7 +7,7 @@ function App() {
     const [loadClient, setLoadClient] = useState(true);
     return (
         <>
-            <MessengerPage/>
+            {window.location.pathname == "/" ? <HomePage/> : <MessengerPage/>}
         </>
     );
 }
