@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import ClientComponent from "./ClientComponent";
+import ClientComponent from "./components/ClientComponent";
 
 function App() {
     const [loadClient, setLoadClient] = useState(true);
