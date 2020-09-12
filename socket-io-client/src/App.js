@@ -6,7 +6,7 @@ function App() {
     const [loadClient, setLoadClient] = useState(true);
     return (
         <>
-            <HomePage/>
+            <MessengerPage/>
         </>
     );
 }

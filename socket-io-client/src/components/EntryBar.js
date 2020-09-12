@@ -9,11 +9,18 @@ export default function EntryBar(props) {
 
     return (
         <InputGroup>
-            <FormControl as="textarea" aria-label="send" style={{'resize':'none'}} onChange = {(e) => {
-                setText(e.target.value);
-            }}/>
+            <FormControl as="textarea"
+                         aria-label="send"
+                         style={{'resize':'none'}}
+                         value = {text}
+                         onChange = {(e) => {
+                            setText(e.target.value);
+                        }}/>
             <InputGroup.Append>
-                <Button variant="info" style={{'width':'100px'}} onClick = {() => {props.send(text)}}>Send</Button>
+                <Button variant="info" style={{'width':'100px'}} onClick = {() => {
+                    props.send(text);
+                    setText("");
+                }}>Send</Button>
             </InputGroup.Append>
         </InputGroup>
     );

@@ -11,14 +11,22 @@ const ENDPOINT = "http://127.0.0.1:4001";
 export default function MessengerPage() {
     const [socket, setSocket] = useState(socketIOClient(ENDPOINT));
     let [room, setRoom] = useState(window.location.pathname);
+    let [messages, setMessages] = useState([]);
+
+    function addMessage(msg) {
+        console.log(messages);
+        setMessages(messages.concat(
+            <TextCard>{msg}</TextCard>
+        ));
+    }
 
     useEffect(() => {
         // CLEAN UP THE EFFECT
         socket.emit("join room", room);
 
         socket.on('textMessage', (message) => {
-            console.log(message);
-        })
+            addMessage(message);
+        });
 
         return () => socket.disconnect();
     }, []);
@@ -26,15 +34,11 @@ export default function MessengerPage() {
     return (
         <Container>
             <h1>This is the messenger page</h1>
-            <TextCard>Test</TextCard>
-            <TextCard>Test</TextCard>
-            <TextCard>Test</TextCard>
-            <TextCard>Test</TextCard>
-            <TextCard>Test</TextCard>
-            <TextCard>Test</TextCard>
+            {messages}
             <Navbar bg="light" expand="lg" fixed={"bottom"}>
                 <Container>
                     <EntryBar send={(text) => {
+                        addMessage(text);
                         socket.emit("textMessage", {text: text, room: room});
                     }}/>
                 </Container>
