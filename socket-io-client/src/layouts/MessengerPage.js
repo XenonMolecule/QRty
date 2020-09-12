@@ -9,7 +9,7 @@ const ENDPOINT = "http://127.0.0.1:4001";
 
 export default function MessengerPage() {
     const [socket, setSocket] = useState(socketIOClient(ENDPOINT));
-    let [room, setRoom] = useState("1");
+    let [room, setRoom] = useState(window.location.pathname);
 
     useEffect(() => {
         // CLEAN UP THE EFFECT
