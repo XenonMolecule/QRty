@@ -19,23 +19,23 @@ export default function MessengerPage() {
 
     return (
         <Container style={{'font-family':'Oswald'}}>
-            <Row className="justify-content-md-center" style={{'text-transform': 'uppercase'}}>
+            <Row className="justify-content-center" style={{'text-transform': 'uppercase'}}>
                 <h1>Welcome to QRty</h1>
             </Row>
-            <Row className="justify-content-md-center">
+            <Row className="justify-content-center">
                 <p>Easily share content between multiple devices</p>
             </Row>
-            <Row className="justify-content-md-center">
+            <Row className="justify-content-center">
                 <Button onClick={() => {window.location=makeID(6)}} variant="primary" size="lg" style = {{'margin-top':'20px', 'text-transform': 'uppercase'}}>
                     Start a Room
                 </Button>{' '}
             </Row>
-            <Row className="justify-content-md-center">
+            <Row className="justify-content-center">
                 <Button onClick={() => {window.location="joinroom"}} variant="primary" size="lg" style = {{'margin-top':'40px', 'text-transform': 'uppercase'}}>
                     Join a Room
                 </Button>{' '}
             </Row>
-            <Row className="justify-content-md-center" style = {{'margin-top':'40px'}}>
+            <Row className="justify-content-center" style = {{'margin-top':'40px'}}>
                 <a href="https://google.com">Click here for information and instructions</a>
             </Row>
         </Container>
