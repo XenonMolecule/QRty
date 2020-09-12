@@ -1,11 +1,15 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 
-import Card from 'react-bootstrap/Card'
+import Row from "react-bootstrap/Row";
+import Card from 'react-bootstrap/Card';
+import '../styles/imgCard.css'
 
 export default function ImageCard(props) {
     return (
-        <Card style={{'marginBottom':'10px'}}>
-            <Card.Img variant="top" src={props.img}/>
-        </Card>
+        <Row className={'justify-content-center'}>
+            <Card style={{'marginBottom':'10px'}}>
+                    <Card.Img variant="top" src={props.img}/>
+            </Card>
+        </Row>
     );
 }

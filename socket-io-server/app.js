@@ -47,7 +47,11 @@ app.post('/uploads', async (req, res, next) => {
 io.on("connection", (socket) => {
     socket.on("textMessage", (message) => {
         socket.to(socket.rooms[message.room]).emit('textMessage', message.text);
+    });
+    socket.on("imgMessage", (message) => {
+        socket.to(socket.rooms[message.room]).emit('imgMessage', message.img);
     })
+
     socket.on('join room', (room) => {
         socket.join(room);
     });

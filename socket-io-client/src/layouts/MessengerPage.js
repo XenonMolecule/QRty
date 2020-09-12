@@ -7,6 +7,7 @@ import Navbar from "react-bootstrap/Navbar";
 import TextCard from "../components/TextCard";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faImages } from '@fortawesome/free-solid-svg-icons'
+import ImageCard from "../components/ImageCard";
 
 const ENDPOINT = "http://127.0.0.1:4001";
 
@@ -23,6 +24,12 @@ export default function MessengerPage() {
         ));
     }
 
+    function addImage(url) {
+        setMessages(messages.concat(
+           <ImageCard img={url}/>
+        ));
+    }
+
     useEffect(() => {
         socket.emit("join room", room);
 
@@ -33,6 +40,11 @@ export default function MessengerPage() {
         socket.on('textMessage', addMessage);
         return () => socket.removeListener('textMessage', addMessage)
     },[messages]);
+
+    useEffect(() => {
+        socket.on('imgMessage', addImage);
+        return () => socket.removeListener('imgMessage', addImage);
+    })
 
     return (
         <>
@@ -67,7 +79,8 @@ export default function MessengerPage() {
                         fetch(ENDPOINT + '/uploads', {method: "POST", body: formData})
                             .then(blob => blob.json())
                             .then(data => {
-                                console.log(data);
+                                addImage(data.data);
+                                socket.emit("imgMessage", {img: data.data, room: room});
                             }).catch(e => {
                                 console.log(e);
                             return e;
