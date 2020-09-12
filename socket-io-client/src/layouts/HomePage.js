@@ -25,7 +25,7 @@ export default function MessengerPage() {
                 </Button>{' '}
             </Row>
             <Row className="justify-content-center" style = {{'margin-top':'40px'}}>
-                <a href="https://google.com">Click here for information and instructions</a>
+                <a href="https://google.com">About QRty</a>
             </Row>
         </Container>
     );
