@@ -4,12 +4,20 @@ const socketIo = require("socket.io");
 const bodyParser = require('body-parser');
 const multer = require('multer');
 const uploadImage = require('./helpers/helpers');
+const path = require('path');
 
 const port = process.env.PORT || 4001;
 const index = require("./routes/index");
 
 const app = express();
-app.use(index);
+
+app.use(express.static(path.join(__dirname, 'build')));
+
+app.get('/', function(req, res) {
+    res.sendFile(path.join(__dirname, 'build', 'index.html'));
+});
+
+//app.use(index);
 
 const server = http.createServer(app);
 

@@ -105,3 +105,4 @@ dist
 
 # Don't release API Keys
 /socket-io-server/config/*.json
+/socket-io-server/build/

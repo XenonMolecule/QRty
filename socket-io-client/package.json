@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@babel/runtime": "^7.11.2",
     "@fortawesome/fontawesome-svg-core": "^1.2.30",
     "@fortawesome/free-solid-svg-icons": "^5.14.0",
     "@fortawesome/react-fontawesome": "^0.1.11",
@@ -11,6 +12,7 @@
     "@testing-library/react": "^9.3.2",
     "@testing-library/user-event": "^7.1.2",
     "autoprefixer": "^9.8.6",
+    "babel-preset-react-app": "^9.1.2",
     "bootstrap": "^4.5.2",
     "colorette": "^1.2.0",
     "qrcode.react": "^1.0.0",
