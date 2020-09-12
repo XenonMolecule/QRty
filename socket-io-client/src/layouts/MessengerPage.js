@@ -13,11 +13,16 @@ import Col from "react-bootstrap/Col";
 
 import '../styles/messenger.css'
 
-const ENDPOINT = "https://qrty-289309.ue.r.appspot.com:4001";
+const ENDPOINT = "http://127.0.0.1:4001";
 
 export default function MessengerPage() {
+    let startRoom = window.location.pathname;
+    if (startRoom.startsWith("/room/")) {
+        startRoom = startRoom.slice(6);
+    }
+
     const [socket, setSocket] = useState(socketIOClient(ENDPOINT));
-    let [room, setRoom] = useState(window.location.pathname);
+    let [room, setRoom] = useState(startRoom);
     let [messages, setMessages] = useState([]);
 
     const fileUpload = useRef(null);

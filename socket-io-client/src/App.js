@@ -16,7 +16,11 @@ function App() {
             page = <JoinRoomPage/>;
             break;
         default:
-            room = window.location.pathname;
+            if (window.location.pathname.startsWith("/room/")) {
+                room = window.location.pathname.slice(6);
+            } else {
+                room = window.location.pathname;
+            }
     }
     return (
         <>
