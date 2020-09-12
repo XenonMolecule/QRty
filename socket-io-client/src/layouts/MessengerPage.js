@@ -36,6 +36,9 @@ export default function MessengerPage() {
 
     return (
         <Container>
+        <Navbar bg="light">
+            <Navbar.Brand href="#">Return Home</Navbar.Brand>
+        </Navbar>
             <Row>
                 <Col lg="10" className="md-12 my-auto">
                     <h1>Scan to connect another device to this room:</h1>
