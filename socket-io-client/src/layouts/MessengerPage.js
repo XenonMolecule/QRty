@@ -8,15 +8,11 @@ import Navbar from "react-bootstrap/Navbar";
 const ENDPOINT = "http://127.0.0.1:4001";
 
 export default function MessengerPage() {
-    useEffect(() => {
-        const socket = socketIOClient(ENDPOINT);
-        // socket.on("FromAPI", data => {
-        //     setResponse(data);
-        // });
+    const [socket, setSocket] = useState(socketIOClient(ENDPOINT));
 
+    useEffect(() => {
         // CLEAN UP THE EFFECT
         return () => socket.disconnect();
-        //
     }, []);
 
     return (
@@ -24,7 +20,9 @@ export default function MessengerPage() {
             <h1>This is the messenger page</h1>
             <Navbar bg="light" expand="lg" fixed={"bottom"}>
                 <Container>
-                    <EntryBar></EntryBar>
+                    <EntryBar send={(text) => {
+                        socket.emit("textMessage", text);
+                    }}/>
                 </Container>
             </Navbar>
         </Container>
