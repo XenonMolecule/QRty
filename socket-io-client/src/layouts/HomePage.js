@@ -3,31 +3,37 @@ import React, { useEffect, useState } from "react";
 import Container from "react-bootstrap/Container";
 import Button from "react-bootstrap/Button";
 import Row from "react-bootstrap/Row";
+import Navbar from "react-bootstrap/Navbar";
 
-export default function MessengerPage() {
+export default function HomePage() {
 
     return (
-        <Container style={{'font-family':'Oswald'}}>
-            <Row className="justify-content-center" style={{'text-transform': 'uppercase'}}>
-                <h1>Welcome to QRty</h1>
-            </Row>
-            <Row className="justify-content-center">
-                <p>Easily share content between multiple devices</p>
-            </Row>
-            <Row className="justify-content-center">
-                <Button onClick={() => {window.location='/room/' + makeID(6)}} variant="primary" size="lg" style = {{'margin-top':'20px', 'text-transform': 'uppercase'}}>
-                    Create a Room
-                </Button>{' '}
-            </Row>
-            <Row className="justify-content-center">
-                <Button onClick={() => {window.location="joinroom"}} variant="primary" size="lg" style = {{'margin-top':'40px', 'text-transform': 'uppercase'}}>
-                    Join a Room
-                </Button>{' '}
-            </Row>
-            <Row className="justify-content-center" style = {{'margin-top':'40px'}}>
-                <a href="/infopage">About QRty</a>
-            </Row>
-        </Container>
+        <>
+            <Container style={{'font-family':'Oswald'}}>
+                <Row className="justify-content-center" style={{'text-transform': 'uppercase'}}>
+                    <h1>Welcome to QRty</h1>
+                </Row>
+                <Row className="justify-content-center">
+                    <p>Easily share content between multiple devices</p>
+                </Row>
+                <Row className="justify-content-center">
+                    <Button onClick={() => {window.location='/room/' + makeID(6)}} variant="primary" size="lg" style = {{'margin-top':'20px', 'text-transform': 'uppercase'}}>
+                        Create a Room
+                    </Button>{' '}
+                </Row>
+                <Row className="justify-content-center">
+                    <Button onClick={() => {window.location="joinroom"}} variant="primary" size="lg" style = {{'margin-top':'40px', 'text-transform': 'uppercase'}}>
+                        Join a Room
+                    </Button>{' '}
+                </Row>
+                <Row className="justify-content-center" style = {{'margin-top':'40px'}}>
+                    <a href="/infopage">About QRty</a>
+                </Row>
+            </Container>
+            <Navbar bg="light" expand="lg" fixed={"bottom"}>
+                <small>v1.0.1</small>
+            </Navbar>
+        </>
     );
 
     function makeID(length) {
