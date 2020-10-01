@@ -2,6 +2,7 @@ import React, { useEffect, useState, useRef } from "react";
 import socketIOClient from "socket.io-client";
 
 import EntryBar from "../components/EntryBar";
+import JoinAlert from "../components/JoinAlert";
 import Container from "react-bootstrap/Container"
 import Navbar from "react-bootstrap/Navbar";
 import TextCard from "../components/TextCard";
@@ -13,7 +14,7 @@ import Col from "react-bootstrap/Col";
 
 import '../styles/messenger.css'
 
-const ENDPOINT = "https://qrty-app.herokuapp.com";
+const ENDPOINT = "localhost:4001"   //"https://qrty-app.herokuapp.com";
 
 export default function MessengerPage() {
     let startRoom = window.location.pathname;
@@ -24,6 +25,7 @@ export default function MessengerPage() {
     const [socket, setSocket] = useState(socketIOClient(ENDPOINT));
     let [room, setRoom] = useState(startRoom);
     let [messages, setMessages] = useState([]);
+    const [showJoinAlert, setShowJoinAlert] = useState(false);
 
     const fileUpload = useRef(null);
 
@@ -39,9 +41,14 @@ export default function MessengerPage() {
         ));
     }
 
+    function joinAlert() {
+        setShowJoinAlert(true);
+        console.log('show alert');
+    }
+
     useEffect(() => {
         socket.emit("join room", room);
-
+        setTimeout(() => {socket.emit('send join alert', room)}, 500)
         return () => socket.disconnect();
     }, []);
 
@@ -55,10 +62,16 @@ export default function MessengerPage() {
         return () => socket.removeListener('imgMessage', addImage);
     })
 
+    useEffect(() => {
+        socket.on('newConnection', joinAlert);
+        return () => socket.removeListener('newConnection', joinAlert);
+    })
+
     return (
         <>
             <Container>
                 <hr style={{'opacity':'0'}}/>
+                <JoinAlert show = {showJoinAlert} setShow = {setShowJoinAlert} />
                 {messages}
                 <hr style={{'opacity':'0','marginTop':'78px'}}/>
                 <Navbar bg="light" expand="lg" fixed={"bottom"}>

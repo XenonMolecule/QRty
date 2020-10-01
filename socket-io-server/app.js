@@ -75,6 +75,11 @@ io.on("connection", (socket) => {
     socket.on('join room', (room) => {
         socket.join(room);
     });
+
+    socket.on('send join alert', (room) => {
+        socket.to(socket.rooms[room]).emit('newConnection');
+    });
+
     socket.on('leave room', (room) => {
         socket.leave(room);
     })
