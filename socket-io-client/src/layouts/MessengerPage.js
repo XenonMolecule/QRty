@@ -14,7 +14,7 @@ import Col from "react-bootstrap/Col";
 
 import '../styles/messenger.css'
 
-const ENDPOINT = "localhost:4001"   //"https://qrty-app.herokuapp.com";
+const ENDPOINT = "https://qrty-app.herokuapp.com";
 
 export default function MessengerPage() {
     let startRoom = window.location.pathname;
