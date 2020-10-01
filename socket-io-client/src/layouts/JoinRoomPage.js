@@ -9,7 +9,7 @@ import Col from "react-bootstrap/Col";
 import Button from "react-bootstrap/Button";
 import QRtyNav from "../components/QRtyNav";
 
-export default function MessengerPage() {
+export default function JoinRoomPage() {
     const txt0 = useRef(null);
     const txt1 = useRef(null);
     const txt2 = useRef(null);
